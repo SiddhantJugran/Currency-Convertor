@@ -1,6 +1,6 @@
 let select = document.querySelectorAll("select")
 // function which is using exchange rate api to convert input amount
-const convert = (event) => {
+const convert = () => {
     let currencyFrom = select[0].value.toLowerCase();
     let currencyTo = select[1].value.toLowerCase();
     const apiurl = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${currencyFrom}.json`
@@ -28,7 +28,7 @@ for (let currCode in countryList) { // countryList object containing country cod
     option1.innerText = currCode;
     option2.value = currCode;
     option2.innerText = currCode;
-    // adding the new created option elements into the select element
+    // adding the new created option elements into the select elements
     select[0].append(option1);
     select[1].append(option2);
 }
@@ -47,7 +47,17 @@ select.forEach((element) => {
         img.src = imgurl;
     })
 })
-// Converting Currency
+// Converting Currency on clicking the button
 let button = document.querySelector("button");
 button.addEventListener("click", convert)
-
+// Swapping Currency on clicking the swap icon
+let icon = document.querySelector(".swap")
+icon.addEventListener("click",()=>{
+let currencyFrom = select[0].value
+select[0].value=select[1].value
+select[1].value=currencyFrom;
+//Dispatching "Change" Event for Select Tags
+let changeEvent= new Event('change');
+select[0].dispatchEvent(changeEvent);
+select[1].dispatchEvent(changeEvent);
+})
