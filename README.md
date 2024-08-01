@@ -8,5 +8,4 @@ Easily convert between different currencies.
 Clean and intuitive UI for quick and easy conversions.
 <br>
 # Technologies used :
-<br>
 HTML,CSS,Javascipt
